@@ -5,6 +5,7 @@
 	import { Input } from '$lib/components/ui/input';
 	import { Button } from '$lib/components/ui/button';
 	import * as Field from '$lib/components/ui/field';
+	import { get_user } from '../../user.remote';
 
 	let error = $state<string>('');
 
@@ -35,6 +36,7 @@
 			{
 				onSuccess: async () => {
 					// TODO: on success
+					get_user().refresh();
 					goto(resolve('/'));
 				}
 			}
@@ -45,7 +47,7 @@
 <div>
 	<h1 class="text-4xl font-extrabold">Sign Up</h1>
 	<form onsubmit={signup}>
-		<Field.Set class="Set">
+		<Field.Set>
 			<Field.Group>
 				<Field.Field>
 					<Field.Label for="email">Email:</Field.Label>
@@ -73,10 +75,14 @@
 					/>
 				</Field.Field>
 				{#if error}
-					<p class="text-red-600">{error}</p>
+					<p class="text-destructive">{error}</p>
 				{/if}
 				<Button class="cursor-pointer" variant="outline" type="submit">Sign Up</Button>
 			</Field.Group>
 		</Field.Set>
 	</form>
 </div>
+
+<p class="mt-8">
+	Already have account? <a href={resolve('/auth/login')}>Log In</a>
+</p>
