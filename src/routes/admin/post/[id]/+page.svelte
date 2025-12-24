@@ -9,13 +9,6 @@
 	const post = await get_post_by_id(page.params.id as string);
 </script>
 
-{#if post}
-	<div>
-		<h1 class="text-4xl font-extrabold">{post?.title}</h1>
-		<p class="mx-6 my-6 text-lg">{post?.body}</p>
-	</div>
-{/if}
-
 <form {...update_post}>
 	<Field.Group>
 		<Field.Set>
