@@ -22,8 +22,8 @@
 
 <ol>
 	{#each await get_all_posts() as post (post.id)}
-		<li>
-			{post.title}
+		<li class="text-xl hover:underline">
+			<a href={resolve(`/admin/post/${post.id}`)}>{post.title}</a>
 		</li>
 	{/each}
 </ol>
