@@ -15,6 +15,12 @@ export const get_post_by_id = query(v.string(), async (id) =>
 	})
 );
 
+export const get_post_by_slug = query(v.string(), async (slug) =>
+	db.query.post.findFirst({
+		where: (post, { eq }) => eq(post.slug, slug),
+	})
+);
+
 export const create_post = form(
 	v.object({
 		title: v.pipe(v.string(), v.nonEmpty("Title is required")),

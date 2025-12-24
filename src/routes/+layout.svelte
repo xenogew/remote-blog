@@ -4,7 +4,7 @@
 	import { ModeWatcher } from "mode-watcher";
 	import { authClient } from "$lib/auth-client";
 	import { get_user } from "./user.remote";
-	import { goto } from "$app/navigation";
+	import { goto, onNavigate } from "$app/navigation";
 	import { resolve } from "$app/paths";
 	import { Button } from "$lib/components/ui/button";
 
@@ -23,6 +23,19 @@
 			},
 		});
 	}
+
+	onNavigate((navigate) => {
+		if (!document.startViewTransition) {
+			return;
+		}
+
+		return new Promise((resolve) => {
+			document.startViewTransition(async () => {
+				resolve();
+				await navigate.complete;
+			});
+		});
+	});
 </script>
 
 <ModeWatcher />
