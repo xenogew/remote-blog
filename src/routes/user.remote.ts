@@ -1,14 +1,14 @@
-import { getRequestEvent, query } from '$app/server';
-import { auth } from '$lib/auth';
+import { getRequestEvent, query } from "$app/server";
+import { auth } from "$lib/auth";
 
 export const get_user = query(async () => {
 	const event = getRequestEvent();
 	const session = await auth.api.getSession({
-		headers: event.request.headers
+		headers: event.request.headers,
 	});
 
 	return {
 		id: session?.user.id || null,
-		email: session?.user.email || null
+		email: session?.user.email || null,
 	};
 });

@@ -1,12 +1,12 @@
 <script lang="ts">
-	import './layout.css';
-	import favicon from '$lib/assets/favicon.svg';
-	import { ModeWatcher } from 'mode-watcher';
-	import { authClient } from '$lib/auth-client';
-	import { get_user } from './user.remote';
-	import { goto } from '$app/navigation';
-	import { resolve } from '$app/paths';
-	import { Button } from '$lib/components/ui/button';
+	import "./layout.css";
+	import favicon from "$lib/assets/favicon.svg";
+	import { ModeWatcher } from "mode-watcher";
+	import { authClient } from "$lib/auth-client";
+	import { get_user } from "./user.remote";
+	import { goto } from "$app/navigation";
+	import { resolve } from "$app/paths";
+	import { Button } from "$lib/components/ui/button";
 
 	let { children } = $props();
 
@@ -18,9 +18,9 @@
 			fetchOptions: {
 				onSuccess: async () => {
 					await get_user().refresh();
-					goto(resolve('/auth/login'));
-				}
-			}
+					goto(resolve("/auth/login"));
+				},
+			},
 		});
 	}
 </script>
@@ -35,7 +35,7 @@
 >
 	<div class="flex w-full items-center gap-1 px-4 lg:gap-2 lg:px-6">
 		<h1 class="text-xl font-bold">
-			<a href={resolve('/')}>Remote Blog</a>
+			<a href={resolve("/")}>Remote Blog</a>
 		</h1>
 		<div class="ms-auto flex items-center gap-2">
 			{#if user.id}

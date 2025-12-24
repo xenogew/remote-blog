@@ -1,13 +1,13 @@
 <script lang="ts">
-	import { goto } from '$app/navigation';
-	import { resolve } from '$app/paths';
-	import { authClient } from '$lib/auth-client';
-	import { get_user } from '../../user.remote';
-	import { Input } from '$lib/components/ui/input';
-	import { Button } from '$lib/components/ui/button';
-	import * as Field from '$lib/components/ui/field';
+	import { goto } from "$app/navigation";
+	import { resolve } from "$app/paths";
+	import { authClient } from "$lib/auth-client";
+	import { get_user } from "../../user.remote";
+	import { Input } from "$lib/components/ui/input";
+	import { Button } from "$lib/components/ui/button";
+	import * as Field from "$lib/components/ui/field";
 
-	let error = $state<string>('');
+	let error = $state<string>("");
 
 	async function login(event: Event) {
 		event.preventDefault();
@@ -17,19 +17,19 @@
 		const password = form.password.value;
 
 		if (!email || !password) {
-			error = 'All fields are required';
+			error = "All fields are required";
 			return;
 		}
 		await authClient.signIn.email(
 			{
 				email,
-				password
+				password,
 			},
 			{
 				onSuccess: async () => {
 					get_user().refresh();
-					goto(resolve('/'));
-				}
+					goto(resolve("/"));
+				},
 			}
 		);
 	}
@@ -65,5 +65,5 @@
 </div>
 
 <p class="mt-8">
-	Don't have an account? <a href={resolve('/auth/signup')}>Sign Up</a>
+	Don't have an account? <a href={resolve("/auth/signup")}>Sign Up</a>
 </p>

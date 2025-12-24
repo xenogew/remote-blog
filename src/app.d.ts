@@ -4,7 +4,7 @@ declare global {
 	namespace App {
 		// interface Error {}
 		interface Locals {
-			user: typeof import('$lib/auth-client').authClient.$infer.Session.user | undefined;
+			user: typeof import("$lib/auth-client").authClient.$infer.Session.user | undefined;
 		}
 		// interface PageData {}
 		// interface PageState {}

@@ -1,6 +1,6 @@
-import { mdsvex } from 'mdsvex';
-import adapter from '@sveltejs/adapter-auto';
-import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
+import { mdsvex } from "mdsvex";
+import adapter from "@sveltejs/adapter-auto";
+import { vitePreprocess } from "@sveltejs/vite-plugin-svelte";
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
@@ -14,16 +14,16 @@ const config = {
 		// See https://svelte.dev/docs/kit/adapters for more information about adapters.
 		adapter: adapter(),
 		experimental: {
-			remoteFunctions: true
-		}
+			remoteFunctions: true,
+		},
 	},
 	compilerOptions: {
 		experimental: {
-			async: true
-		}
+			async: true,
+		},
 	},
 
-	extensions: ['.svelte', '.svx']
+	extensions: [".svelte", ".svx"],
 };
 
 export default config;

@@ -1,23 +1,23 @@
 <script lang="ts">
-	import { get_all_posts } from './posts.remote';
-	import { resolve } from '$app/paths';
-	import { goto } from '$app/navigation';
-	import { Button } from '$lib/components/ui/button';
-	import Send from '@lucide/svelte/icons/send';
+	import { get_all_posts } from "./posts.remote";
+	import { resolve } from "$app/paths";
+	import { goto } from "$app/navigation";
+	import { Button } from "$lib/components/ui/button";
+	import Send from "@lucide/svelte/icons/send";
 
 	let flyout = $state<boolean>(false);
 
 	function handleClick() {
 		flyout = true;
 		setTimeout(() => {
-			goto(resolve('/admin/post/new'));
+			goto(resolve("/admin/post/new"));
 		}, 500);
 	}
 </script>
 
 <Button class="my-6 cursor-pointer" variant="secondary" onclick={handleClick}>
 	Create Post
-	<Send class={['mr-2', { flyout }]} />
+	<Send class={["mr-2", { flyout }]} />
 </Button>
 
 <ol>

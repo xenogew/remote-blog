@@ -1,13 +1,13 @@
 <script lang="ts">
-	import { goto } from '$app/navigation';
-	import { resolve } from '$app/paths';
-	import { authClient } from '$lib/auth-client';
-	import { Input } from '$lib/components/ui/input';
-	import { Button } from '$lib/components/ui/button';
-	import * as Field from '$lib/components/ui/field';
-	import { get_user } from '../../user.remote';
+	import { goto } from "$app/navigation";
+	import { resolve } from "$app/paths";
+	import { authClient } from "$lib/auth-client";
+	import { Input } from "$lib/components/ui/input";
+	import { Button } from "$lib/components/ui/button";
+	import * as Field from "$lib/components/ui/field";
+	import { get_user } from "../../user.remote";
 
-	let error = $state<string>('');
+	let error = $state<string>("");
 
 	async function signup(event: Event) {
 		event.preventDefault();
@@ -19,26 +19,26 @@
 		const passwordConfirm = form.passwordConfirm.value;
 
 		if (password !== passwordConfirm) {
-			error = 'Passwords do not match';
+			error = "Passwords do not match";
 			return;
 		}
 
 		if (!email || !password || !passwordConfirm) {
-			error = 'All fields are required';
+			error = "All fields are required";
 			return;
 		}
 		await authClient.signUp.email(
 			{
 				email,
 				password,
-				name: username
+				name: username,
 			},
 			{
 				onSuccess: async () => {
 					// TODO: on success
 					get_user().refresh();
-					goto(resolve('/'));
-				}
+					goto(resolve("/"));
+				},
 			}
 		);
 	}
@@ -84,5 +84,5 @@
 </div>
 
 <p class="mt-8">
-	Already have account? <a href={resolve('/auth/login')}>Log In</a>
+	Already have account? <a href={resolve("/auth/login")}>Log In</a>
 </p>
