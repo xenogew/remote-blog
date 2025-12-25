@@ -13,13 +13,14 @@
 		"format": "prettier --write .",
 		"lint": "prettier --check . && eslint .",
 		"test:unit": "vitest",
-		"test": "npm run test:unit -- --run && npm run test:e2e",
+		"test": "bun run test:unit -- --run && bun run test:e2e",
 		"test:e2e": "playwright test",
 		"db:start": "docker compose up",
 		"db:push": "drizzle-kit push",
 		"db:generate": "drizzle-kit generate",
 		"db:migrate": "drizzle-kit migrate",
-		"db:studio": "drizzle-kit studio"
+		"db:studio": "drizzle-kit studio",
+		"ui:update": "bun x shadcn-svelte@latest add button field input label separator table textarea --overwrite -y"
 	},
 	"devDependencies": {
 		"@eslint/compat": "^2.0.0",
